@@ -1,0 +1,43 @@
+<div class="card">
+    <div class="tag" *ngIf="!serviceCard">{{service.category}}</div>
+    <img class="card-image" src="/assets/images/blogs/{{service.image}}">
+    <div class="card-title">{{service.title}}</div>
+    <div class="card-text">{{service.description}}</div>
+    <a class="card-link" href="#" *ngIf="!serviceCard" [routerLink]="'/article/' + service.url">Читать дальше</a>
+    <div class="card-details" *ngIf="serviceCard">
+        <span class="price">От 7 500₽</span>
+        <button class="button" (click)="openPopup(service.title)">Подробнее</button>
+    </div>
+</div>
+
+<ng-template #popup>
+    <div class="services-popup" >
+        <div class="services-popup-close" (click)="closePopup()">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="1.93562" y1="2.64999" x2="13.9564" y2="14.6708" stroke="#BEBEBE" stroke-linecap="round" />
+                <line x1="13.9236" y1="2.62978" x2="1.90277" y2="14.6506" stroke="#BEBEBE" stroke-linecap="round" />
+            </svg>
+        </div>
+        <div *ngIf="!isSubmitted">
+            <div class="services-popup-title">Заявка на услугу</div>
+            <form class="services-popup-form" [formGroup]="serviceForm" (ngSubmit)="orderService()">
+                <input class="popup-input input" type="text" formControlName="service" readonly>
+                <input class="popup-input input" type="text" placeholder="Ваше имя" formControlName="name" 
+                 [ngStyle]="{'border-color':serviceForm.get('name')?.invalid && (serviceForm.get('name')?.dirty||serviceForm.get('name')?.touched)? 'red' : ''}"
+                >
+                <input class="popup-input input" type="text" placeholder="Ваш номер телефона" formControlName="phone"
+                 [ngStyle]="{'border-color':serviceForm.get('phone')?.invalid && (serviceForm.get('phone')?.dirty||serviceForm.get('phone')?.touched)? 'red' : ''}"
+                >
+                <button class="popup-button button" type="submit">Оставить заявку</button>
+            </form>
+        </div>
+        <div *ngIf="isSubmitted">
+            <div class="services-popup-title">Спасибо за вашу заявку!</div>
+            <div class="services-popup-text">Мы свяжемся с вами при первой же возможности.</div>
+            <button class="ok button" (click)="reset()">Окей</button>
+        </div>
+        <div *ngIf="isError" class="error">Ошибка при отправке формы. Попробуйте еще раз</div>
+    </div>
+
+ 
+</ng-template>

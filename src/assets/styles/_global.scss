@@ -1,0 +1,86 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    height: 100%;
+}
+
+.container {
+    max-width: $container-width;
+    margin: 0 auto;
+}
+
+.input {
+    border: 2px solid $blue-color;
+    border-radius: 3px;
+    padding: 17px 20px;
+    margin-bottom: 5px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+}
+
+.button {
+    text-align: center;
+    border-radius: 5px;
+    padding: 15px;
+    background-color: $blue-color;
+    box-sizing: border-box;
+    cursor: pointer;
+    border: 0;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #FFFFFF;
+
+    &:disabled {
+        cursor: not-allowed;
+        background-color: gray;
+    }
+}
+
+.owl-theme .owl-nav.disabled+.owl-dots {
+    margin-top: -35px;
+    z-index: 5;
+    position: relative;
+}
+
+.owl-theme .owl-dots .owl-dot span {
+    background-color: transparent;
+    border: 1px solid #FFFFFF;
+}
+
+.owl-theme .owl-dots .owl-dot.active span {
+    background-color: #FFFFFF;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.content {
+    flex: 1 0 auto;
+}
+
+.app-footer {
+    flex: 0 0 auto;
+}
+
+
+h3 {
+    
+    font-family: "Montserrat",sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 130%;
+    color: #709FDC;
+}
+
+.mat-dialog-container{
+    padding: 0 !important;
+    border-radius: 10px !important;
+}

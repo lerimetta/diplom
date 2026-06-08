@@ -1,0 +1,68 @@
+@import "../../../../assets/styles/variables";
+
+.header {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+
+    .container {
+        display: flex;
+        align-items: center;
+
+        .logo {
+            margin-right: 100px;
+        }
+
+        .header-list {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            li {
+                margin-right: 30px;
+
+                &:last-child {
+                    margin-right: 257px;
+                }
+
+                a {
+                    color: $main-text-color;
+                    cursor: pointer;
+                    text-decoration: none;
+                    &.active{
+                        color: #709FDC;
+                    }
+                }
+            }
+        }
+
+        .header-phone {
+            text-decoration: none;
+            color: $blue-color;
+
+        }
+
+        .header-enter {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            margin-left: auto;
+            color: $main-text-color;
+            cursor: pointer;
+
+            &::before {
+                content: "";
+                display: inline-block;
+                width: 24px;
+                height: 24px;
+                margin-right: 7px;
+                background-image: url('/assets/images/user.svg');
+                background-size: contain;
+                background-repeat: no-repeat;
+            }
+        }
+    }
+}

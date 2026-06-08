@@ -1,0 +1,82 @@
+<footer class="footer">
+    <div class="container">
+        <div class="footer-top">
+            <img class="footer-logo" src="/assets/images/logo.svg" alt="logo">
+            <nav>
+                <ul class="footer-list">
+                    <li>
+                        <a routerLink="/" fragment="services">Услуги</a>
+                    </li>
+                    <li>
+                        <a routerLink="/" fragment="about">О нас</a>
+                    </li>
+                    <li>
+                        <a routerLink="/blog" routerLinkActive="active">Статьи</a>
+                    </li>
+                    <li>
+                        <a routerLink="/" fragment="reviews">Отзывы</a>
+                    </li>
+                    <li>
+                        <a routerLink="/" fragment="contacts">Контакты</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-bottom-block">
+                <div class="footer-bottom-block-title">Адрес</div>
+                <div class="footer-bottom-block-text">Пресненская наб., 12, Москва, Россия, 123317.</div>
+                <div class="footer-bottom-block-rights">© 2022. Все права защищены</div>
+            </div>
+            <div class="footer-bottom-block">
+                <div class="footer-bottom-block-title">Телефон</div>
+                <a href="tel:+74993431334" class="footer-bottom-block-text">+7 (499) 343-13-34</a>
+                <button class="button footer-button" (click)="openPopup()">Перезвоните мне</button>
+            </div>
+            <div class="footer-bottom-block">
+                <div class="footer-bottom-block-title">E-mail</div>
+                <a href="mailto:info@itstorm.com" class="footer-bottom-block-text">info@itstorm.com</a>
+            </div>
+            <div class="footer-bottom-block">
+                <div class="footer-bottom-block-title">Мы в социальных сетях:</div>
+                <div class="footer-bottom-block-socials">
+                    <a href="https://www.vk.com" target="_blank"><img src="/assets/images/vk.svg" alt="icon"></a>
+                    <a href="https://www.facebook.com" target="_blank">
+                        <img src="/assets/images/facebook.svg" alt="icon">
+                    </a>
+                    <a href="https://www.instagram.com" target="_blank">
+                        <img src="/assets/images/instagram.svg" alt="icon"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<ng-template #popup>
+    <div class="services-popup">
+        <div class="services-popup-close" (click)="closePopup()">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="1.93562" y1="2.64999" x2="13.9564" y2="14.6708" stroke="#BEBEBE" stroke-linecap="round" />
+                <line x1="13.9236" y1="2.62978" x2="1.90277" y2="14.6506" stroke="#BEBEBE" stroke-linecap="round" />
+            </svg>
+        </div>
+        <div *ngIf="!isSubmitted">
+            <div class="services-popup-title">Закажите бесплатную консультацию!</div>
+            <form class="services-popup-form" [formGroup]="consultForm" (ngSubmit)="orderService()">
+                <input class="popup-input input" type="text" placeholder="Ваше имя" formControlName="name"
+                    [ngStyle]="{'border-color':consultForm.get('name')?.invalid && (consultForm.get('name')?.dirty||consultForm.get('name')?.touched)? 'red' : ''}">
+                <input class="popup-input input" type="text" placeholder="Ваш номер телефона" formControlName="phone"
+                    [ngStyle]="{'border-color':consultForm.get('phone')?.invalid && (consultForm.get('phone')?.dirty||consultForm.get('phone')?.touched)? 'red' : ''}">
+                <button class="popup-button button" type="submit">Оставить заявку</button>
+            </form>
+        </div>
+        <div *ngIf="isSubmitted">
+            <div class="services-popup-title">Спасибо за вашу заявку!</div>
+            <div class="services-popup-text">Мы свяжемся с вами при первой же возможности.</div>
+            <button class="ok button" (click)="reset()">Окей</button>
+        </div>
+        <div *ngIf="isError" class="error">Ошибка при отправке формы. Попробуйте еще раз</div>
+    </div>
+
+
+</ng-template>

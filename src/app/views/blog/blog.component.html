@@ -1,0 +1,76 @@
+<section class="blog">
+    <div class="container">
+        <div class="blog-title">Блог</div>
+        <div class="filter-wrap">
+            <div class="applied-filters">
+                <div class="applied-filter" *ngFor="let appliedFilter of appliedFilters">
+                    <span>{{appliedFilter}}</span>
+                    <a (click)="removeFilter(appliedFilter)">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_24214_614)">
+                                <line x1="1.93553" y1="2.65002" x2="13.9563" y2="14.6708" stroke="#709FDC"
+                                    stroke-linecap="round" />
+                                <line x1="13.9236" y1="2.62984" x2="1.90278" y2="14.6507" stroke="#709FDC"
+                                    stroke-linecap="round" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_24214_614">
+                                    <rect width="16" height="16" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="filter-sorting" [class.open]="sortingOpen" (click)="toggleSorting()">
+                <div class="filter-sorting-head">
+                    <span>Фильтр</span>
+                    <svg *ngIf="!sortingOpen" width="15" height="8" viewBox="0 0 15 8" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M7.22292 7.16458C6.63958 7.16458 6.05625 6.93958 5.61458 6.49792L0.18125 1.06458C-0.0604167 0.822916 -0.0604167 0.422917 0.18125 0.18125C0.422917 -0.0604167 0.822917 -0.0604167 1.06458 0.18125L6.49792 5.61458C6.89792 6.01458 7.54792 6.01458 7.94792 5.61458L13.3812 0.18125C13.6229 -0.0604167 14.0229 -0.0604167 14.2646 0.18125C14.5062 0.422917 14.5062 0.822916 14.2646 1.06458L8.83125 6.49792C8.38958 6.93958 7.80625 7.16458 7.22292 7.16458Z"
+                            fill="#071739" />
+                    </svg>
+
+                    <svg *ngIf="sortingOpen" width="15" height="8" viewBox="0 0 15 8" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M7.22288 -3.14713e-05C7.80622 -3.14713e-05 8.38955 0.224967 8.83122 0.666634L14.2646 6.09997C14.5062 6.34163 14.5062 6.74163 14.2646 6.9833C14.0229 7.22497 13.6229 7.22497 13.3812 6.9833L7.94788 1.54997C7.54788 1.14997 6.89788 1.14997 6.49788 1.54997L1.06455 6.9833C0.822886 7.22497 0.422884 7.22497 0.181217 6.9833C-0.0604486 6.74163 -0.0604486 6.34163 0.181217 6.09997L5.61455 0.666634C6.05622 0.224967 6.63955 -3.14713e-05 7.22288 -3.14713e-05Z"
+                            fill="#071739" />
+                    </svg>
+                </div>
+                <div class="filter-sorting-body">
+                    <div class="filter-sorting-item" *ngFor="let category of filterCategories"
+                        (click)="filter(category.url)"
+                        [class.active]="activeParams.categories ? activeParams.categories.includes(category.url) : false">
+                        <div>{{category.name}}</div>
+                        <span class="plus">  {{ activeParams.categories?.includes(category.url) ? '-' : '+' }}</span>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="blog-articles">
+            <card *ngFor="let article of blogArticles" [service]="article"></card>
+        </div>
+        <div class="pagination" *ngIf="pages.length > 1">
+            <div class="arrow-left" (click)="openPrevPage()"
+                [class.disabled]="activeParams.page ? activeParams.page === 1 : true">
+                <svg disabled width="30" height="30" viewBox="0 0 512 512" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M338 419L175 256L338 93" stroke="#709FDC" stroke-width="24" stroke-linecap="round" />
+                </svg>
+            </div>
+            <div class="pagination-pages">
+                <a class="page" (click)="openPage(page)" *ngFor="let page of pages"
+                    [class.active]="activeParams.page? activeParams.page === page : (page ===1)">{{page}}</a>
+            </div>
+            <div class="arrow-right" (click)="openNextPage()"
+                [class.disabled]="activeParams.page ? activeParams.page === pages.length : false">
+                <svg width="30" height="30" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M175 419L338 256L175 93" stroke="#709FDC" stroke-width="24" stroke-linecap="round" />
+                </svg>
+            </div>
+        </div>
+    </div>
+</section>

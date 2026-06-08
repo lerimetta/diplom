@@ -1,0 +1,234 @@
+@import "../../../assets/styles/mixins";
+
+.details {
+    .container {
+        .breadcrumbs {
+            margin-bottom: 60px;
+            color: #709FDC;
+            font-size: 16px;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 500;
+
+            span {
+                color: #B9D5FD;
+                font-size: 14px;
+            }
+        }
+
+        .details-header {
+            display: flex;
+            justify-content: space-between;
+
+            .title-wrap {
+                max-width: 607px;
+
+                .details-title {
+                    @include head-lora-38;
+                    margin-bottom: 40px;
+                }
+
+                .details-subtitle {
+                    font-family: "Montserrat", sans-serif;
+                    font-weight: 400;
+                    font-size: 20px;
+                    line-height: 130%;
+                    color: #709FDC;
+                }
+
+            }
+
+            .header-image {
+                border-radius: 5px;
+            }
+        }
+
+
+        .wrapper {
+            margin-top: 60px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+
+            .article {
+                max-width: 818px;
+            }
+
+            .aside {
+                .aside-title {
+                    font-family: "Lora", sans-serif;
+                    font-weight: 400;
+                    font-size: 26px;
+                    color: #709FDC;
+                    margin-top: 80px;
+                    margin-bottom: 20px;
+                }
+
+                .aside-wrap {
+
+                    width: 300px; // Задайте точную ширину вашего сайдбара
+                    flex-shrink: 0; // Запрещаем сайдбару сжиматься и превращаться в полоску
+
+                    // Расстояние между карточками внутри сайдбара
+                    display: flex;
+                    flex-direction: column;
+                    row-gap: 60px;
+                }
+            }
+        }
+
+        .shared-wrap {
+            display: flex;
+            align-items: center;
+
+            .shared {
+                margin-top: 60px;
+                margin-bottom: 60px;
+                margin-right: 20px;
+                color: #709FDC;
+            }
+
+            svg {
+                margin-right: 14px;
+            }
+        }
+
+    }
+}
+
+.comments {
+
+    .container {
+        .comment-title {
+            @include head-lora-38;
+            margin-bottom: 20px;
+        }
+
+        .comment-subtitle {
+            margin-bottom: 60px;
+
+            a {
+                text-decoration: none;
+                color: #709FDC;
+            }
+        }
+
+        .comment-field {
+            display: block;
+            margin-bottom: 20px;
+            width: 818px;
+            height: 248px;
+            box-sizing: border-box;
+            padding: 20px;
+            border: 2px solid #709FDC;
+            border-radius: 3px;
+            outline: none;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 130%;
+
+            &:focus {
+                border-color: #033a81;
+                border-color: #0075c9;
+            }
+
+        }
+
+        .details-button {
+            width: 422px;
+        }
+
+        .comments-item {
+            margin-top: 40px;
+
+            .comment-icon-wrap {
+                display: flex;
+                margin-bottom: 15px;
+
+                .comment-icon {
+                    width: 60px;
+                    height: 60px;
+                    background-color: #B9D5FD;
+                    border: 2px solid #709FDC;
+                    border-radius: 50%;
+                    background-image: url('/assets/images/user-icon.svg');
+                    margin-right: 20px;
+                }
+
+                .comment-name {
+                    font-family: "Montserrat", sans-serif;
+                    font-weight: 600;
+                    font-size: 18px;
+                    color: #709FDC;
+                    margin-bottom: 10px;
+                }
+
+                .comment-data {
+                    font-family: "Montserrat", sans-serif;
+                    font-weight: 600;
+                    font-size: 14px;
+                    color: #BEBEBE;
+                }
+
+            }
+
+
+            .comment-text {
+                line-height: 140%;
+                color: #071739;
+                max-width: 854px;
+                margin-bottom: 39px;
+            }
+
+            .comment-reactions {
+                display: flex;
+                align-items: center;
+
+                .count {
+                    font-family: "Montserrat", sans-serif;
+                    font-weight: 600;
+                    font-size: 14px;
+                    margin-right: 2px;
+                    min-width: 20px;
+                    text-align: center;
+
+                    &.active {
+                        color: #709FDC;
+                    }
+                }
+
+                .like {
+                    margin-right: 10px;
+                    cursor: pointer;
+
+                    svg.active path {
+                        stroke: #709FDC;
+                    }
+                }
+
+                .complaint {
+                    cursor: pointer;
+                    margin-left: 5px;
+                }
+            }
+        }
+
+        .load-comments {
+            display: flex;
+            align-items: center;
+            margin-top: 60px;
+
+
+            .load-comments-text {
+                font-family: "Montserrat", sans-serif;
+                font-weight: 500;
+                font-size: 20px;
+                color: #709FDC;
+                margin-right: 10px;
+                cursor: pointer;
+            }
+        }
+
+    }
+}

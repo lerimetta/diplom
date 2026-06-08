@@ -1,0 +1,179 @@
+@import "../../../assets/styles/mixins";
+
+.blog {
+    .container {
+        .blog-title {
+            @include head-lora-38;
+            margin-bottom: 40px;
+        }
+
+        .blog-filter {
+            font-family: "Montserrat", sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            color: $main-text-color;
+        }
+
+        .filter-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+
+            .applied-filters {
+                display: flex;
+                flex-wrap: wrap;
+
+                .applied-filter {
+                    border: 2px solid #709FDC;
+                    border-radius: 5px;
+                    padding: 8px 20px;
+                    font-size: 16px;
+                    color: #709FDC;
+                    display: flex;
+                    align-items: center;
+                    margin-right: 20px;
+                    margin-bottom: 20px;
+
+                    a {
+                        text-decoration: none;
+                        cursor: pointer;
+                        display: flex;
+                        margin-left: 8px;
+                    }
+                }
+            }
+
+            .filter-sorting {
+                width: 148px;
+                min-width: 148px;
+                box-sizing: border-box;
+                position: relative;
+                font-size: 16px;
+                user-select: none;
+                margin-bottom: 44px;
+                margin-left: auto;
+
+                .filter-sorting-head {
+                    display: flex;
+                    align-items: center;
+                    padding: 12px 0 12px 23px;
+                    justify-content: space-between;
+                    cursor: pointer;
+
+                    span {
+                        margin-right: 8px;
+                    }
+
+                    svg {
+                        pointer-events: none;
+                    }
+                }
+
+                .filter-sorting-body {
+                    position: absolute;
+                    box-sizing: border-box;
+                    width: 100%;
+                    z-index: 3;
+                    display: none;
+                    padding: 12px 23px;
+                    border-radius: 0 0 5px 5px;
+                    background-color: #FFFFFF;
+                    border: 1px solid #B9D5FD;
+                    color: #BEBEBE;
+
+                    .filter-sorting-item {
+                        margin-bottom: 14px;
+                        cursor: pointer;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+
+                        .plus {
+                            font-size: 24px;
+                        }
+
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+
+                        &.active {
+                            color: #071739;
+
+                        }
+                    }
+                }
+
+                &.open {
+                    width: 257px;
+                    min-width: 257px;
+
+                    .filter-sorting-head {
+                        background-color: #B9D5FD;
+                        color: #000000;
+                        border-radius: 5px 5px 0 0;
+                        padding-right: 23px;
+                    }
+
+                    .filter-sorting-body {
+                        display: block;
+                    }
+                }
+
+            }
+        }
+
+        .blog-articles {
+            display: flex;
+            flex-wrap: wrap;
+            column-gap: 24px;
+            row-gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        
+
+            .arrow-left {
+                margin-right: 30px;
+                cursor: pointer;
+
+                &.disabled {
+                    cursor: not-allowed;
+
+                    path {
+                        stroke: #D9D9D9;
+                    }
+                }
+            }
+
+            .page {
+                font-family: "Montserrat", sans-serif;
+                font-weight: 400;
+                font-size: 20px;
+                color: #071739;
+                margin-right: 40px;
+                cursor: pointer;
+
+                &.active {
+                    color: #B9D5FD;
+                }
+            }
+
+            .arrow-right {
+                cursor: pointer;
+                margin-left: -5px;
+
+                &.disabled {
+                    cursor: not-allowed;
+
+                    path {
+                        stroke: #D9D9D9;
+                    }
+                }
+            }
+        }
+    }
+}
