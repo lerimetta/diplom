@@ -16,7 +16,10 @@ import { AuthInterceptor } from './core/auth/auth.interceptor';
 import { DetailsComponent } from './views/details/details.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatMenuModule} from '@angular/material/menu';
-import {MatDialogModule} from '@angular/material/dialog'; 
+import {MatDialogModule} from '@angular/material/dialog';
+import { LoaderComponent } from './shared/loader/loader.component'; 
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { PrivacyPolicyComponent } from './views/privacy-policy/privacy-policy.component'; 
 
 @NgModule({
   declarations: [
@@ -27,7 +30,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     MainComponent,
     CardComponent,
     BlogComponent,
-    DetailsComponent
+    DetailsComponent,
+    LoaderComponent,
+    PrivacyPolicyComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +41,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatSnackBarModule,
     MatMenuModule,
     MatDialogModule,
+    MatProgressSpinnerModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     AppRoutingModule
@@ -45,4 +51,4 @@ import {MatDialogModule} from '@angular/material/dialog';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {  }

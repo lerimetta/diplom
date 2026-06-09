@@ -1,19 +1,20 @@
 <section class="details">
     <div class="container">
         <div class="breadcrumbs">
-           <span>Блог /</span>  {{article.title}}
+           <span>Блог /</span>  {{article?.title}}
         </div>
         <div class="details-header">
             <div class="title-wrap">
-                <div class="details-title">{{article.title}}</div>
-                <div class="details-subtitle">{{article.description}}</div>
+                <div class="details-title">{{article?.title}}</div>
+                <div class="details-subtitle">{{article?.description}}</div>
             </div>
-            <img *ngIf="article?.image" class="header-image" width="527" height="320"
+            <img *ngIf="article" class="header-image" width="527" height="320"
                 src="/assets/images/blogs/{{article.image}}" alt="">
+                
         </div>
         <div class="wrapper">
             <div>
-                <article class="article" [innerHTML]="article.text"></article>
+                <article class="article" [innerHTML]="article?.text"></article>
                 <div class="shared-wrap">
                     <div class="shared">Понравилась статья? Поделитесь ею в своих социальных сетях!</div>
                     <a href="https://www.vk.com" target="_blank">
@@ -71,7 +72,7 @@
                         <form *ngIf="isLogged" [formGroup]="myForm" (ngSubmit)="addComment()">
                             <textarea formControlName="commentText" class="comment-field"
                                 placeholder="Напишите Ваш комментарий к статье..."></textarea>
-                            <button class="details-button button" type="submit">Опубликовать
+                            <button class="details-button button" [disabled]="myForm.invalid">Опубликовать
                                 комментарий</button>
                         </form>
                         <div class="comments-item" *ngFor="let comment of comments">

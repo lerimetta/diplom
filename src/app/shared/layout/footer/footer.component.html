@@ -65,9 +65,11 @@
             <form class="services-popup-form" [formGroup]="consultForm" (ngSubmit)="orderService()">
                 <input class="popup-input input" type="text" placeholder="Ваше имя" formControlName="name"
                     [ngStyle]="{'border-color':consultForm.get('name')?.invalid && (consultForm.get('name')?.dirty||consultForm.get('name')?.touched)? 'red' : ''}">
+                    <div class="footer-error" *ngIf="consultForm.get('name')?.invalid && (consultForm.get('name')?.dirty||consultForm.get('name')?.touched)">Заполните поле</div>
                 <input class="popup-input input" type="text" placeholder="Ваш номер телефона" formControlName="phone"
                     [ngStyle]="{'border-color':consultForm.get('phone')?.invalid && (consultForm.get('phone')?.dirty||consultForm.get('phone')?.touched)? 'red' : ''}">
-                <button class="popup-button button" type="submit">Оставить заявку</button>
+                     <div class="footer-error" *ngIf="consultForm.get('phone')?.invalid && (consultForm.get('phone')?.dirty||consultForm.get('phone')?.touched)">Заполните поле</div>
+                <button class="popup-button button">Оставить заявку</button>
             </form>
         </div>
         <div *ngIf="isSubmitted">

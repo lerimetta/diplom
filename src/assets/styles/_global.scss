@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 html,
 body {
     margin: 0;
@@ -72,15 +76,20 @@ body {
 
 
 h3 {
-    
-    font-family: "Montserrat",sans-serif;
+
+    font-family: "Montserrat", sans-serif;
     font-weight: 500;
     font-size: 20px;
     line-height: 130%;
     color: #709FDC;
 }
 
-.mat-dialog-container{
+.mat-dialog-container {
     padding: 0 !important;
     border-radius: 10px !important;
+}
+
+.mat-progress-spinner circle,
+.mat-spinner circle {
+  stroke: #709FDC;
 }

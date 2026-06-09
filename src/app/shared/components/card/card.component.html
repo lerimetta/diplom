@@ -25,10 +25,12 @@
                 <input class="popup-input input" type="text" placeholder="Ваше имя" formControlName="name" 
                  [ngStyle]="{'border-color':serviceForm.get('name')?.invalid && (serviceForm.get('name')?.dirty||serviceForm.get('name')?.touched)? 'red' : ''}"
                 >
+                <div class="card-error" *ngIf="serviceForm.get('name')?.invalid && (serviceForm.get('name')?.dirty||serviceForm.get('name')?.touched)">Заполните поле</div>
                 <input class="popup-input input" type="text" placeholder="Ваш номер телефона" formControlName="phone"
                  [ngStyle]="{'border-color':serviceForm.get('phone')?.invalid && (serviceForm.get('phone')?.dirty||serviceForm.get('phone')?.touched)? 'red' : ''}"
                 >
-                <button class="popup-button button" type="submit">Оставить заявку</button>
+                 <div class="card-error" *ngIf="serviceForm.get('phone')?.invalid && (serviceForm.get('phone')?.dirty||serviceForm.get('phone')?.touched)">Заполните поле</div>
+                <button class="popup-button button">Оставить заявку</button>
             </form>
         </div>
         <div *ngIf="isSubmitted">

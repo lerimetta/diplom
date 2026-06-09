@@ -4,6 +4,16 @@
     .container {
         display: flex;
 
+        .auth-form {
+            .auth-inputs {
+                .signup-error {
+                    color: red;
+                    margin-bottom: 5px;
+                    margin-left: 5px;
+                }
+            }
+        }
+
         .page-image {
             margin-top: 123px;
             margin-bottom: 148px;

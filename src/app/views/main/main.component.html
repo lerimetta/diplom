@@ -22,7 +22,7 @@
                         <div class="banner-title">Новость дня</div>
                         <div class="banner-text"><span>6 место</span> в ТОП-10 <br>
                             SMM-агенств Москвы!</div>
-                            <div class="banner-subtext">Мы благодарим каждого, кто голосовал за нас!.</div>
+                        <div class="banner-subtext">Мы благодарим каждого, кто голосовал за нас!.</div>
                         <button class="button" (click)="openPopup('Реклама')">Подробнее</button>
                     </div>
                 </ng-template>
@@ -146,7 +146,9 @@
 
 <section class="contacts" id="contacts">
     <div class="container">
-        <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A678d2190db6b6225b75f29859a540d7b750c5e2a22979c3452f8f454c3337369&amp;source=constructor" width="607" height="438" frameborder="0"></iframe>
+        <iframe
+            src="https://yandex.ru/map-widget/v1/?um=constructor%3A678d2190db6b6225b75f29859a540d7b750c5e2a22979c3452f8f454c3337369&amp;source=constructor"
+            width="607" height="438" frameborder="0"></iframe>
         <div class="contacts-info">
             <div class="contacts-title">Контакты</div>
             <div class="contacts-subtitle">Адрес</div>
@@ -203,7 +205,7 @@
     </div>
 </section>
 <ng-template #popup>
-    <div class="services-popup" >
+    <div class="services-popup">
         <div class="services-popup-close" (click)="closePopup()">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <line x1="1.93562" y1="2.64999" x2="13.9564" y2="14.6708" stroke="#BEBEBE" stroke-linecap="round" />
@@ -214,13 +216,15 @@
             <div class="services-popup-title">Заявка на услугу</div>
             <form class="services-popup-form" [formGroup]="serviceForm" (ngSubmit)="orderService()">
                 <input class="popup-input input" type="text" formControlName="service" readonly>
-                <input class="popup-input input" type="text" placeholder="Ваше имя" formControlName="name" 
-                 [ngStyle]="{'border-color':serviceForm.get('name')?.invalid && (serviceForm.get('name')?.dirty||serviceForm.get('name')?.touched)? 'red' : ''}"
-                >
+                <input class="popup-input input" type="text" placeholder="Ваше имя" formControlName="name"
+                    [ngStyle]="{'border-color':serviceForm.get('name')?.invalid && (serviceForm.get('name')?.dirty||serviceForm.get('name')?.touched)? 'red' : ''}">
+                <div class="main-error"
+                    *ngIf="serviceForm.get('name')?.invalid && (serviceForm.get('name')?.dirty||serviceForm.get('name')?.touched)">
+                    Заполните поле</div>
                 <input class="popup-input input" type="text" placeholder="Ваш номер телефона" formControlName="phone"
-                 [ngStyle]="{'border-color':serviceForm.get('phone')?.invalid && (serviceForm.get('phone')?.dirty||serviceForm.get('phone')?.touched)? 'red' : ''}"
-                >
-                <button class="popup-button button" type="submit">Оставить заявку</button>
+                    [ngStyle]="{'border-color':serviceForm.get('phone')?.invalid && (serviceForm.get('phone')?.dirty||serviceForm.get('phone')?.touched)? 'red' : ''}">
+                       <div class="main-error" *ngIf="serviceForm.get('phone')?.invalid && (serviceForm.get('phone')?.dirty||serviceForm.get('phone')?.touched)">Заполните поле</div>
+                <button class="popup-button button">Оставить заявку</button>
             </form>
         </div>
         <div *ngIf="isSubmitted">
@@ -231,5 +235,5 @@
         <div *ngIf="isError" class="error">Ошибка при отправке формы. Попробуйте еще раз</div>
     </div>
 
- 
+
 </ng-template>

@@ -23,6 +23,9 @@ export class BlogComponent implements OnInit {
   constructor(private blogService: BlogService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+
+
+
     this.blogService.getCategories().subscribe(categories => {
       this.filterCategories = categories;
       this.activatedRoute.queryParams.subscribe(params => {
