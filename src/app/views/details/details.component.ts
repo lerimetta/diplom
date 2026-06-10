@@ -31,7 +31,7 @@ export class DetailsComponent implements OnInit {
     commentText: ['', [Validators.required, Validators.minLength(5)]]
   });
 
-  constructor(private fb: FormBuilder, private blogService: BlogService, private activatedRoute: ActivatedRoute, private _snackBar: MatSnackBar, private authService: AuthService,private loaderService:LoaderService) {
+  constructor(private fb: FormBuilder, private blogService: BlogService, private activatedRoute: ActivatedRoute, private _snackBar: MatSnackBar, private authService: AuthService, private loaderService: LoaderService) {
     this.isLogged = this.authService.getIsLoggedIn();
   }
 
@@ -76,6 +76,7 @@ export class DetailsComponent implements OnInit {
         if (commentValue && this.article) {
           this.blogService.addComment(commentValue, this.article.id)
             .subscribe(() => {
+              this.myForm.reset();
               this.blogService.getComments({ article: this.article!.id, offset: 0 })
                 .subscribe(data => {
                   this.comments = data.comments;
@@ -171,7 +172,7 @@ export class DetailsComponent implements OnInit {
           },
           error: err => console.error('Ошибка при загрузке дополнительных комментариев:', err)
         });
-        this.loaderService.hide();
+      this.loaderService.hide();
     }
   }
 }
